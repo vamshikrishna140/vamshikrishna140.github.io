@@ -9,12 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Visualization & Content Choices: 
-        - Report Info: Key Achievements (30% conversion, 22% CTR) -> Goal: Impact/Inform -> Viz: HTML/CSS Stat Cards -> Interaction: Static display -> Justification: Draws immediate attention to quantifiable results.
-        - Report Info: Work Experience at Swym Corp -> Goal: Organize/Detail -> Viz: HTML/CSS Tabbed Sections -> Interaction: Click to show/hide content -> Justification: Organizes detailed project information into digestible pieces, preventing a wall of text and encouraging user exploration. Method: Vanilla JS.
-        - Report Info: Technical Skills List -> Goal: Compare/Inform -> Viz: Chart.js Horizontal Bar Chart -> Interaction: Hover tooltips for context -> Justification: Provides a more visually engaging and quickly comparable overview of technical proficiency than a simple list. Library: Chart.js.
-        - Report Info: Contact/Personal Details -> Goal: Inform/Action -> Viz: Formatted Text & Links -> Interaction: Clickable links -> Justification: Standard, clear presentation for actionable contact info.
-    -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -48,14 +42,14 @@
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl">
         <header class="text-center py-12">
             <h1 class="text-4xl md:text-5xl font-bold text-slate-800">Bijimalla Shiva Vamshi Krishna</h1>
-            <p class="text-xl md:text-2xl mt-2 text-slate-600">Seeking a Machine Learning Engineer Role at <span class="font-semibold accent-color">DP World</span></p>
+            <p class="text-xl md:text-2xl mt-2 text-slate-600">Machine Learning Engineer | Seeking New Opportunities</p>
         </header>
 
         <main>
             <section id="introduction" class="my-12 text-center max-w-4xl mx-auto">
                 <h2 class="text-2xl font-bold text-slate-800 mb-4">Introduction</h2>
                 <p class="text-lg text-slate-700 leading-relaxed">
-                    I am a results-oriented Machine Learning Engineer with a B.Tech in Computer Science and hands-on experience developing production-grade ML systems. I am excited by the opportunity to apply my skills in data pipelines, multi-modal modeling, and recommender systems to solve real-world challenges in a dynamic, collaborative environment like DP World.
+                    I am a results-oriented Machine Learning Engineer with a B.Tech in Computer Science and hands-on experience developing production-grade ML systems. I am excited by the opportunity to apply my skills in data pipelines, multi-modal modeling, and recommender systems to solve real-world challenges in a dynamic, collaborative environment.
                 </p>
             </section>
 
@@ -75,26 +69,32 @@
                     <div class="bg-white p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
                         <p class="text-5xl font-extrabold accent-color">Full</p>
                         <p class="mt-2 text-lg font-semibold text-slate-700">ML Lifecycle Expertise</p>
-                        <p class="mt-1 text-slate-500">From data preprocessing and model training to scalable deployment on Azure with MLOps.</p>
+                        <p class="mt-1 text-slate-500">From data preprocessing and model training to scalable deployment on cloud platforms with MLOps.</p>
                     </div>
                 </div>
             </section>
 
             <section id="experience" class="my-16">
-                <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">Professional Experience: Swym Corporation</h2>
+                <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">Professional Experience</h2>
                 <div class="max-w-4xl mx-auto">
                     <div class="border-b border-gray-200 mb-6">
                         <nav class="flex space-x-4 sm:space-x-8 -mb-px" aria-label="Tabs">
-                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-active" data-tab="pipelines">Data Pipelines</button>
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-active" data-tab="overview">Overview</button>
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="pipelines">Data Pipelines</button>
                             <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="categorization">Product Categorization</button>
                             <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="recommender">Recommender Systems</button>
                             <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="research">Research & Publications</button>
                         </nav>
                     </div>
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
-                        <div id="pipelines" class="tab-content">
+                        <div id="overview" class="tab-content">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">My Work Experience</h3>
+                            <p class="text-slate-600 leading-relaxed">During my professional journey, I've gained hands-on experience in various aspects of Machine Learning, contributing to the development and deployment of robust ML solutions. My roles have involved working with large-scale data, building sophisticated models, and optimizing performance for real-world applications.</p>
+                             <p class="text-slate-600 leading-relaxed mt-4">For detailed projects and specific company experience, please refer to my LinkedIn profile or resume.</p>
+                        </div>
+                        <div id="pipelines" class="tab-content hidden">
                             <h3 class="text-xl font-bold text-slate-800 mb-2">Scalable Data Pipelines</h3>
-                            <p class="text-slate-600 leading-relaxed">Deployed highly scalable, fault-tolerant data pipelines to process and analyze user interaction data in real-time. This foundational work enabled advanced analytics and powered machine learning models across the organization.</p>
+                            <p class="text-slate-600 leading-relaxed">Deployed highly scalable, fault-tolerant data pipelines to process and analyze user interaction data in real-time. This foundational work enabled advanced analytics and powered machine learning models across various organizations.</p>
                             <div class="mt-4">
                                 <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">PySpark</span>
                                 <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Kafka</span>
@@ -143,9 +143,9 @@
             </section>
 
             <footer class="text-center py-12 border-t mt-16">
-                <h2 class="text-2xl font-bold text-slate-800">Ready to Collaborate</h2>
+                <h2 class="text-2xl font-bold text-slate-800">Let's Connect!</h2>
                 <p class="mt-4 text-lg text-slate-700 max-w-2xl mx-auto">
-                    I am confident that my blend of technical expertise, cloud experience, and strong communication skills makes me a great fit for DP World. I am eager to discuss how I can contribute to your innovative ML initiatives.
+                    I am actively seeking new opportunities where I can apply my skills in Machine Learning to drive innovation and solve complex problems. Feel free to reach out to discuss potential collaborations or roles.
                 </p>
                 <div class="mt-8 flex justify-center items-center space-x-8">
                     <a href="mailto:bsvk1432@gmail.com" class="text-slate-600 hover:accent-color transition-colors">bsvk1432@gmail.com</a>
@@ -178,6 +178,12 @@
                     });
                 });
             });
+
+            // Add a default active tab and content for "Overview"
+            const defaultTab = document.querySelector('.tab-btn[data-tab="overview"]');
+            if (defaultTab) {
+                defaultTab.click();
+            }
 
             const skillsData = {
                 labels: ['PyTorch', 'TensorFlow', 'Spark', 'PySpark', 'Kafka', 'Azure Databricks', 'MLflow', 'Gemini / LLaVA'],
