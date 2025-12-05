@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijimalla Shiva Vamshi Krishna - ML Engineer Portfolio</title>
+    <style>
+        /* Base Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        :root {
+            /* Enhanced Deep-Tech Colors */
+            --color-bg-dark: #0A0D14; /* Very dark background */
+            --color-bg-mid: #161B22; /* Card background base (GitHub style) */
+            --color-text-light: #E6EBF0; /* Brightest white text */
+            --color-text-mid: #C9D1D9; /* Standard text (slightly muted white) */
+            --color-text-dark: #8B949E; /* Subtitle/Description text */
+            
+            --color-accent-blue: #58A6FF; /* Primary Action Blue (Lighter/Brighter) */
+            --color-accent-cyan: #39C5BB; /* Secondary Accent (Aqua/Cyan) */
+            --color-accent-purple: #C084F5; /* Tertiary Accent */
+
+            /* Gradient definitions */
+            --gradient-hero: linear-gradient(90deg, #58A6FF, #39C5BB, #58A6FF);
+            --gradient-cta: linear-gradient(135deg, #39C5BB, #58A6FF);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Subtler, deeper background gradient */
+            background: linear-gradient(135deg, var(--color-bg-dark) 0%, #10141D 50%, var(--color-bg-dark) 100%);
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+            color: var(--color-text-light);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Utility Classes (Simplified Tailwind) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+        }
+
+        .flex { display: flex; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .flex-wrap { flex-wrap: wrap; }
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-12 { margin-top: 3rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .rounded-full { border-radius: 9999px; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .border { border: 1px solid; }
+        .border-gray-700 { border-color: #30363D; } /* Darker gray border */
+        
+        .text-sm { font-size: 0.875rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-6xl { font-size: 3.75rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        
+        .text-cyan-accent { color: var(--color-accent-cyan); }
+        .text-blue-accent { color: var(--color-accent-blue); }
+        .text-gray-300 { color: var(--color-text-mid); }
+        .text-gray-400 { color: var(--color-text-dark); }
+        .text-gray-200 { color: #E6EBF0; }
+        .text-purple-accent { color: var(--color-accent-purple); }
+        
+        .bg-gray-800-50 { background-color: rgba(22, 27, 34, 0.7); } /* Translucent card BG */
+        .bg-gray-800 { background-color: var(--color-bg-mid); }
+        .bg-blue-accent-20 { background-color: rgba(88, 166, 255, 0.1); }
+        .bg-blue-600 { background-color: #2D67B2; }
+        .bg-cyan-600 { background-color: #2F928A; }
+        
+        .text-transparent { color: transparent; }
+        .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
+        .gradient-text-hero { background-image: var(--gradient-hero); }
+
+        /* Animation Keyframes */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+        }
+
+        /* Specific Component Styles */
+        .animated-bg-blob {
+            position: fixed;
+            width: 24rem; height: 24rem;
+            border-radius: 9999px;
+            filter: blur(5rem); /* Increased blur */
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .blob-1 {
+            background-color: var(--color-accent-blue);
+            top: -12rem; left: -12rem;
+            animation: pulse 5s infinite alternate;
+        }
+        .blob-2 {
+            background-color: var(--color-accent-purple);
+            top: 50%; right: 0;
+            animation: pulse 5s infinite alternate 1.5s;
+        }
+        .blob-3 {
+            background-color: var(--color-accent-cyan);
+            bottom: 0; left: 33.333333%;
+            animation: pulse 5s infinite alternate 3s;
+        }
+
+        /* Navigation */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 13, 20, 0.9); /* Darker, slightly opaque */
+            backdrop-filter: blur(12px); /* Sharper blur */
+            z-index: 50;
+            border-bottom: 1px solid #30363D;
+        }
+        .nav-link {
+            transition: color 0.3s;
+            text-decoration: none;
+            color: var(--color-text-dark);
+        }
+        .nav-link:hover {
+            color: var(--color-accent-cyan);
+        }
+        .nav-cta {
+            background-image: var(--gradient-cta);
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(57, 197, 187, 0.3);
+            font-weight: 600;
+        }
+        .nav-cta:hover {
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* Card/Section Styles - Enhanced */
+        .card {
+            background-color: rgba(22, 27, 34, 0.6); /* bg-gray-800/60 */
+            backdrop-filter: blur(6px);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363D;
+            transition: all 0.3s ease-in-out;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* subtle inner shadow */
+        }
+        .card:hover {
+            border-color: var(--color-accent-cyan);
+            box-shadow: 0 0 20px rgba(57, 197, 187, 0.2), inset 0 0 10px rgba(88, 166, 255, 0.1);
+            transform: scale(1.01);
+        }
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(88, 166, 255, 0.15);
+            color: var(--color-accent-blue);
+            font-size: 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            font-weight: 600;
+        }
+        .tag-pill {
+            padding: 0.5rem 1rem;
+            background-color: rgba(57, 197, 187, 0.1); /* Cyan accent BG */
+            color: var(--color-accent-cyan);
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(57, 197, 187, 0.3);
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        .tag-pill:hover { 
+            background-color: rgba(57, 197, 187, 0.2); 
+            color: var(--color-text-light);
+        }
+        .hero-stats-card {
+             background-color: rgba(22, 27, 34, 0.5);
+             border-radius: 0.75rem;
+             border: 1px solid #30363D;
+        }
+
+        /* Hero Specific */
+        .hero-title {
+            font-size: 4.5rem; 
+            line-height: 1;
+            font-weight: 800;
+        }
+        .hero-subtitle {
+             color: var(--color-accent-blue);
+             font-weight: 700;
+        }
+
+        /* Responsive adjustments (basic) */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } 
+            .hero-title { font-size: 3rem; } 
+            .grid-3-col { grid-template-columns: 1fr; }
+            .grid-2-col { grid-template-columns: 1fr; }
+            .max-w-4xl { max-width: 100%; }
+        }
+        @media (min-width: 768px) {
+            .grid-3-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .grid-2-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .hero-title { font-size: 4.5rem; }
+        }
+
+        /* Spacing Overrides */
+        .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+        .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+        .animate-bounce { animation: bounce 1s infinite; }
+        
+        /* Button Styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-blue {
+            background-color: var(--color-accent-blue);
+            color: var(--color-bg-dark);
+            box-shadow: 0 4px 10px rgba(88, 166, 255, 0.3);
+        }
+        .btn-blue:hover {
+            background-color: #7BBFFF;
+            box-shadow: 0 6px 15px rgba(88, 166, 255, 0.5);
+            transform: translateY(-1px);
+        }
+        .btn-dark {
+            background-color: #30363D;
+            color: var(--color-text-light);
+            border: 1px solid #484F58;
+        }
+        .btn-dark:hover {
+            background-color: #484F58;
+            border-color: var(--color-accent-cyan);
+        }
+        .btn-cyan {
+            background-color: var(--color-accent-cyan);
+            color: var(--color-bg-dark);
+            box-shadow: 0 4px 10px rgba(57, 197, 187, 0.3);
+        }
+        .btn-cyan:hover {
+            background-color: #5FE0D6;
+            box-shadow: 0 6px 15px rgba(57, 197, 187, 0.5);
+            transform: translateY(-1px);
+        }
+        .contact-btn-outline {
+             border: 1px solid #484F58;
+             background-color: var(--color-bg-mid);
+             color: var(--color-text-mid);
+             font-weight: 500;
+        }
+        .contact-btn-outline:hover {
+            border-color: var(--color-accent-blue);
+            color: var(--color-accent-blue);
+        }
+        .contact-btn-gradient {
+            background-image: var(--gradient-cta);
+            color: var(--color-bg-dark);
+            box-shadow: 0 4px 15px rgba(57, 197, 187, 0.4);
+            font-weight: 600;
+        }
+        .contact-btn-gradient:hover {
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.6);
+            transform: translateY(-1px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background Blobs (Simplified) -->
+    <div class="animated-bg-blob blob-1"></div>
+    <div class="animated-bg-blob blob-2"></div>
+    <div class="animated-bg-blob blob-3"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed-nav">
+        <div class="container py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text-hero bg-clip-text">
+                VK
+            </div>
+            <div class="flex gap-6 items-center nav-menu">
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-cta">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="mb-6 flex items-center gap-2 justify-center px-4 py-2 bg-blue-accent-20 rounded-full border" style="display: inline-flex; border-color: rgba(57, 197, 187, 0.5);">
+                <span style="color: var(--color-accent-cyan);">✨</span>
+                <span class="text-sm">Available for exciting ML/AI opportunities</span>
+            </div>
+            
+            <h1 class="hero-title mb-6">
+                <span class="gradient-text-hero bg-clip-text text-transparent">
+                    Bijimalla Shiva Vamshi Krishna
+                </span>
+            </h1>
+            
+            <p class="text-2xl hero-subtitle mb-4">
+                Machine Learning Engineer
+            </p>
+            
+            <p class="text-xl text-gray-400 mb-8 mx-auto" style="max-width: 48rem;">
+                Building intelligent systems with Deep Learning, NLP, and Computer Vision. 
+                Passionate about transforming complex data into actionable insights.
+            </p>
+            
+            <div class="flex gap-4 justify-center mb-12">
+                <a href="https://www.linkedin.com/in/shiva-vamshi-krishna-bijimalla-a417821b3/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="btn btn-blue">
+                    <!-- Icon Placeholder -->
+                    <span class="icon">in</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/vamshikrishna140" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="btn btn-dark">
+                    <!-- Icon Placeholder -->
+                    <span class="icon">🐙</span>
+                    <span>GitHub</span>
+                </a>
+                <a href="mailto:bsvk1432@gmail.com" 
+                    class="btn btn-cyan">
+                    <!-- Icon Placeholder -->
+                    <span class="icon">✉️</span>
+                    <span>Email</span>
+                </a>
+            </div>
+
+            <div class="grid-3-col gap-6 mx-auto mb-12" style="max-width: 42rem;">
+                <div class="hero-stats-card text-center p-6 hover:shadow-lg" style="box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <div class="text-3xl font-bold text-cyan-accent">2+</div>
+                    <div class="text-gray-400 text-sm">Years Experience</div>
+                </div>
+                <div class="hero-stats-card text-center p-6 hover:shadow-lg" style="box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <div class="text-3xl font-bold text-blue-accent">10+</div>
+                    <div class="text-gray-400 text-sm">Projects Built</div>
+                </div>
+                <div class="hero-stats-card text-center p-6 hover:shadow-lg" style="box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <div class="text-3xl font-bold text-purple-accent">Top 50</div>
+                    <div class="text-gray-400 text-sm">AI Challenges</div>
+                </div>
+            </div>
+
+            <div class="w-8 h-8 mx-auto animate-bounce text-cyan-accent">↓</div> 
+        </div>
+    </section>
+
+    <!-- Horizontal Rule -->
+    <hr style="border: none; border-top: 1px solid #1f2937;">
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 relative">
+        <div class="container max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-12">
+                <span class="icon-lg text-cyan-accent">💼</span>
+                <h2 class="text-4xl font-bold">Experience</h2>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Swym Corporation - Associate Software Engineer -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-accent">Associate Software Engineer – Machine Learning</h3>
+                            <p class="text-xl text-gray-300">Swym Corporation</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-blue-accent font-semibold">Jul 2024 – Present</p>
+                            <p class="text-gray-400 text-sm">Remote, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Optimized user engagement with advanced segmentation models, leading to 30% increase in conversion rates</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Built scalable PySpark/Kafka pipelines reducing processing time by 40%</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Deployed multi-modal product categorization models (Gemini, LLaVA) with 15% accuracy boost</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Implemented GCN-based recommendation engines increasing CTR by 22%</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Achieved 0.88 AUC on propensity models for purchase/revisit prediction</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Swym Corporation - Intern -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-accent">Machine Learning Intern</h3>
+                            <p class="text-xl text-gray-300">Swym Corporation</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-blue-accent font-semibold">Jan 2024 – Jun 2024</p>
+                            <p class="text-gray-400 text-sm">Remote, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Built GenAI tools (Text2SQL, documentation generation) for developer integrations</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Developed AI-based customer journey personalization using forecasting</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Established model evaluation frameworks for cross-team alignment</span>
+                        </li>
+                    </ul>
+                </div>
+
+                 <!-- Society for Health and Medical Technology - Intern -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-cyan-accent">Data Analyst Intern</h3>
+                            <p class="text-xl text-gray-300">Society for Health and Medical Technology</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-blue-accent font-semibold">Jul 2021 – Dec 2021</p>
+                            <p class="text-gray-400 text-sm">Hyderabad, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Preprocessed health datasets improving statistical accuracy by 20%</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Built and deployed NLP-based chatbot for DocPlus health application</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <span class="text-cyan-accent mt-1">▹</span>
+                            <span>Performed EDA on asthma datasets identifying key health patterns</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Rule -->
+    <hr style="border: none; border-top: 1px solid #1f2937;">
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 relative">
+        <div class="container max-w-6xl mx-auto">
+            <div class="flex items-center gap-3 mb-12">
+                <span class="icon-lg text-cyan-accent">🧠</span>
+                <h2 class="text-4xl font-bold">Featured Projects</h2>
+            </div>
+            
+            <div class="grid-2-col gap-8">
+                <!-- Sports Photo Ranking System -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-accent">Sports Photo Ranking System</h3>
+                        <a href="https://github.com/vamshikrishna140/ImageRanks" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-accent" style="text-decoration: none;">
+                            <span class="icon">🔗</span>
+                        </a>
+                    </div>
+                    <p class="text-gray-300 mb-4">Multi-model ensemble approach combining NIMA, CLIP, and CV heuristics for intelligent sports photo ranking</p>
+                    
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Ensemble of 3 complementary AI models (NIMA aesthetic/technical + CLIP)</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Custom CV heuristics: sharpness, contrast, edge density, motion blur detection</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Rule of thirds composition analysis</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Achieved superior ranking quality over individual models</span></li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="project-tag">Deep Learning</span>
+                        <span class="project-tag">Computer Vision</span>
+                        <span class="project-tag">CLIP</span>
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">PyTorch</span>
+                    </div>
+                </div>
+
+                <!-- ACE Framework for AppWorld -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-accent">ACE Framework for AppWorld</h3>
+                        </div>
+                    <p class="text-gray-300 mb-4">Agent-Critic-Executor framework with Thompson Sampling for autonomous task execution and adaptation</p>
+                    
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Thompson Sampling for intelligent retry decisions using Beta distributions</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Quality-weighted credit attribution across Agent/Reflector/Curator</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Dynamic playbook learning from task feedback</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Online and offline adaptation modes with provably optimal convergence</span></li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="project-tag">RL</span>
+                        <span class="project-tag">Bayesian Learning</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <!-- AI Wardrobe Management System -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-accent">AI Wardrobe Management System</h3>
+                        </div>
+                    <p class="text-gray-300 mb-4">Full-stack AI platform for personalized outfit recommendations with item-level feedback learning</p>
+                    
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Multi-modal clothing analysis (ResNet embeddings + Gemini vision)</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>JWT authentication with secure user management</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Item-level feedback learning for personalized recommendations</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Real-time outfit generation based on event context and weather</span></li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="project-tag">Gemini AI</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">PostgreSQL</span>
+                        <span class="project-tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <!-- Resume Skill Extraction & Job Matching -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-accent">Resume Skill Extraction & Job Matching</h3>
+                        </div>
+                    <p class="text-gray-300 mb-4">NLP-powered system for extracting skills from resumes and matching candidates to jobs</p>
+                    
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Automated skill extraction from PDF resumes</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Job recommendation engine with semantic matching</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Google OAuth integration for seamless login</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Real-time job search with PostgreSQL vector similarity</span></li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="project-tag">NLP</span>
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">Google OAuth</span>
+                        <span class="project-tag">Vector Search</span>
+                    </div>
+                </div>
+
+                 <!-- Diabetic Retinopathy Detection -->
+                <div class="card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-accent">Diabetic Retinopathy Detection</h3>
+                        <!-- <a href="https://ckdprediction.streamlit.app" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-accent" style="text-decoration: none;">
+                            <span class="icon">🔗</span>
+                        </a> -->
+                    </div>
+                    <p class="text-gray-300 mb-4">Deep learning model for predicting chronic kidney disease stages from retina scans</p>
+                    
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Multi-class classification (Mild/Moderate/Severe/PDR/No DR)</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>384x384 image processing pipeline</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Deployed web app for clinical use</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-cyan-accent mt-1">•</span><span>Achieved high accuracy on medical image dataset</span></li>
+                    </ul>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="project-tag">CNN</span>
+                        <span class="project-tag">Medical Imaging</span>
+                        <span class="project-tag">Streamlit</span>
+                        <span class="project-tag">Deep Learning</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Rule -->
+    <hr style="border: none; border-top: 1px solid #1f2937;">
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 relative">
+        <div class="container max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-12">
+                <span class="icon-lg text-cyan-accent">💾</span>
+                <h2 class="text-4xl font-bold">Technical Skills</h2>
+            </div>
+            
+            <div class="grid-2-col gap-6">
+                <!-- Languages -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Python</span>
+                        <span class="tag-pill">C++</span>
+                        <span class="tag-pill">SQL</span>
+                    </div>
+                </div>
+                <!-- ML/DL Frameworks -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">ML/DL Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">PyTorch</span>
+                        <span class="tag-pill">TensorFlow</span>
+                        <span class="tag-pill">HuggingFace</span>
+                        <span class="tag-pill">BERT</span>
+                        <span class="tag-pill">LangChain</span>
+                    </div>
+                </div>
+                <!-- Big Data -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">Big Data</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">PySpark</span>
+                        <span class="tag-pill">Kafka</span>
+                        <span class="tag-pill">Delta Live Tables</span>
+                    </div>
+                </div>
+                <!-- Cloud & MLOps -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">Cloud & MLOps</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Azure</span>
+                        <span class="tag-pill">Databricks</span>
+                        <span class="tag-pill">MLflow</span>
+                        <span class="tag-pill">Docker</span>
+                    </div>
+                </div>
+                <!-- Databases -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">PostgreSQL</span>
+                        <span class="tag-pill">MongoDB</span>
+                    </div>
+                </div>
+                <!-- Web -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-cyan-accent mb-4">Web</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">FastAPI</span>
+                        <span class="tag-pill">React</span>
+                        <span class="tag-pill">Streamlit</span>
+                        <span class="tag-pill">Django</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-8 rounded-2xl border" style="border-color: rgba(57, 197, 187, 0.5); background-color: rgba(22, 27, 34, 0.8);">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <span class="icon-lg text-cyan-accent">🏅</span>
+                    Achievements
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3 text-gray-200">
+                        <span class="text-cyan-accent">🏆</span>
+                        <span>Top 50 in Huawei AI Digix Global ML Challenge</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-200">
+                        <span class="text-cyan-accent">🏆</span>
+                        <span>7th rank in AmExpert ML Hackathon on HackerEarth</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-200">
+                        <span class="text-cyan-accent">🏆</span>
+                        <span>Published research: 'Deep Learning for Crack Detection on Civil Structures' (Wiley)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Rule -->
+    <hr style="border: none; border-top: 1px solid #1f2937;">
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-6 relative">
+        <div class="container max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-12">
+                <span class="icon-lg text-cyan-accent">🎓</span>
+                <h2 class="text-4xl font-bold">Education</h2>
+            </div>
+            
+            <div class="card">
+                <h3 class="text-2xl font-bold text-cyan-accent">B.Tech in Computer Science and Business Systems</h3>
+                <p class="text-xl text-gray-300 mt-2">SASTRA University, Thanjavur, India</p>
+                <div class="flex justify-between items-center mt-4">
+                    <p class="text-blue-accent font-semibold">Jul 2019 – May 2024</p>
+                    <p class="text-cyan-accent font-bold text-xl">GPA: 8.15/10</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Rule -->
+    <hr style="border: none; border-top: 1px solid #1f2937;">
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 relative">
+        <div class="container max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Let's Build Something Amazing</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            </p>
+            
+            <div class="flex gap-6 justify-center flex-wrap">
+                <a href="mailto:bsvk1432@gmail.com" 
+                    class="btn contact-btn-gradient px-8 py-4 rounded-xl text-lg text-white" style="text-decoration: none;">
+                    <span class="icon">✉️</span>
+                    bsvk1432@gmail.com
+                </a>
+                <a href="tel:+918688930059" 
+                    class="btn contact-btn-outline px-8 py-4 rounded-xl text-lg">
+                    📱 +91 8688930059
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800 text-center text-gray-400" style="border-color: #30363D;">
+        <p>© 2024 Vamshi Krishna. Built with modern web technologies.</p>
+        <p class="mt-2">Hyderabad, Telangana, India</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Basic active section logic for highlighting nav links
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                // Check if section is visible (80px offset for fixed header)
+                const sectionTop = section.offsetTop - 120; 
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = 'var(--color-text-dark)'; 
+                if (link.getAttribute('href').includes(current)) {
+                    link.style.color = 'var(--color-accent-cyan)'; // Apply active style
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
